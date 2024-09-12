@@ -1,5 +1,7 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:smartshopes/TabBarScreenForProdictList/AirProdictsScreen.dart';
 import 'package:smartshopes/TabBarScreenForProdictList/ApplePhoneScreen.dart';
@@ -15,6 +17,15 @@ class All_prodicts_Screen extends StatefulWidget {
 }
 
 class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
+  final ImageLIst = [
+    Image.asset('assets/image/aN5y2biC5HpLOPacEm8lJXfAkXhc4QcMXvsL5wBF.png'),
+    Image.asset('assets/image/Canpaign_Banner_for_FEL_1440X640_px.png'),
+    Image.asset('assets/image/vision-pro-card-66-vision-pro-202401.jpeg'),
+    Image.asset('assets/image/Macbook-Air-M1-Chip.webp'),
+    Image.asset('assets/image/appbok001.jpg'),
+
+  ];
+  int CrantImageList = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -176,10 +187,31 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                     ),
                   ),
 
+
                 ],
               ),
             ),
-          )
+          ),
+          /// Silider Image
+          SizedBox(height: 6,),
+          Column(
+            children: [
+    CarouselSlider(
+      items: ImageLIst,
+      options: CarouselOptions(
+        autoPlay: true,
+        height: 130,
+        onPageChanged: (index ,reson){
+          setState(() {
+          CrantImageList = index;
+          });
+        }
+
+      ),),
+
+            Text('Hi'),
+            ],
+          ),
         ],
 
       ),

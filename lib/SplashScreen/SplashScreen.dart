@@ -1,4 +1,10 @@
+import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+ import 'package:lottie/lottie.dart';
+import 'package:smartshopes/HomeScreen/HomeScreen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -9,18 +15,43 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
+  void initState() {
+   Timer(Duration(seconds: 5), () {
+     Get.to(HomeScreen());
+   });
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: Column(
-        children: [
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/image/bg1.png')
-                )
-              ),
-            )
-        ],
+    return  SafeArea(
+      child: Scaffold(
+        body: Row(
+    
+      mainAxisAlignment: MainAxisAlignment.center,
+    
+      children: [
+    
+    
+        SingleChildScrollView(
+          child: Column(
+              
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              
+              SizedBox(height: 60,),
+              Text("    Welcom Sir \n Places Wait.....",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),),
+              Lottie.asset('assets/image/dalevareman.json',height: 350,width: 350),
+              SizedBox(height: 90,),
+              Text('  Welcom To Smart Shope \n'
+                  ' World Best Deal For Heare and Best Descoutn '
+                  '\n সব কিছু এখানে পাবে সব থেকে কম দামে'
+                  ' \n 50% ডিসকাউনটে \n Best Deal of All Time  ',style: TextStyle(fontWeight: FontWeight.bold),)
+            ],
+          ),
+        )
+            ],
+        ),
       ),
     );
   }

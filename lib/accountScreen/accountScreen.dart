@@ -11,9 +11,9 @@ class _accountScreenState extends State<accountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
 
-      ),
+
+
       body: Center(child: Text('Account Screen')),
     );
   }
