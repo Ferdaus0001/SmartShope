@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:smartshopes/HomeScreen/HomeScreen.dart';
 
+import 'LoginScreen/LoginScreen.dart';
+
 void main(){
   runApp(MyApp());
 }
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
 
      return GetMaterialApp(
-       home: HomeScreen(),
+       home:  HomeScreen(),
        debugShowCheckedModeBanner: false,
 
      );
