@@ -10,9 +10,19 @@ class BuyProdectsScreen extends StatefulWidget {
 class _BuyProdectsScreenState extends State<BuyProdectsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text(' BuyProdectsScreen'),
+    return SafeArea(
+      child: Scaffold(
+       body: Padding(
+         padding: const EdgeInsets.all(1.0),
+         child: Column(
+
+        children: [
+          Text('HI'),
+        ],
+
+
+          ),
+       ),
       ),
     );
   }

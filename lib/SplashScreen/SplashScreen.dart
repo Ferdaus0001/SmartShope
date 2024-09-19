@@ -44,7 +44,6 @@ class _SplashScreenState extends State<SplashScreen> {
               Lottie.asset('assets/image/dalevareman.json',height: 350,width: 350),
               SizedBox(height: 90,),
               Text('  Welcom To Smart Shope \n'
-                  ' World Best Deal For Heare and Best Descoutn '
                   '\n সব কিছু এখানে পাবে সব থেকে কম দামে'
                   ' \n 50% ডিসকাউনটে \n Best Deal of All Time  ',style: TextStyle(fontWeight: FontWeight.bold),)
             ],
