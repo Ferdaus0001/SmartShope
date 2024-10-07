@@ -6,6 +6,8 @@ import 'package:get/get.dart';
  import 'package:lottie/lottie.dart';
 import 'package:smartshopes/HomeScreen/HomeScreen.dart';
 
+import '../LoginScreen/LoginScreen.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -17,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
    Timer(Duration(seconds: 5), () {
-     Get.to(HomeScreen());
+     Get.to(LoginScreen());
    });
     super.initState();
   }
