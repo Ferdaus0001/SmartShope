@@ -5,7 +5,19 @@ import 'package:smartshopes/SplashScreen/SplashScreen.dart';
 
 import 'LoginScreen/LoginScreen.dart';
 
-void main(){
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+// ...
+
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+
+  );
+
   runApp(MyApp());
 }
 

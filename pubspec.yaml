@@ -39,6 +39,12 @@ dependencies:
   salomon_bottom_bar: ^3.3.2
   lottie: ^3.1.2
   carousel_slider: ^5.0.0
+  firebase_core:
+  firebase_messaging:
+  firebase_crashlytics:
+  firebase_auth:
+  firebase_storage:
+
 
 dev_dependencies:
   flutter_test:

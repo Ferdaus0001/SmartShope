@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../All_Prodict_Screen_Home/All_Prodicts_Screen.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SingupScreen extends StatefulWidget {
   const SingupScreen({super.key});
@@ -11,7 +14,22 @@ class SingupScreen extends StatefulWidget {
 }
 
 class _SingupScreenState extends State<SingupScreen> {
-  String _selectedOption = 'Male';  // Default selected option
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+
+  String _selectedOption = 'Male';
+  FirebaseAuth auth = FirebaseAuth.instance;
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +41,9 @@ class _SingupScreenState extends State<SingupScreen> {
             width: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/image/login.png'),
-                  fit: BoxFit.cover,
-                )),
+              image: AssetImage('assets/image/login.png'),
+              fit: BoxFit.cover,
+            )),
             child: Padding(
               padding: const EdgeInsets.only(top: 50.0, left: 11),
               child: Text(
@@ -51,137 +69,190 @@ class _SingupScreenState extends State<SingupScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(17.0),
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      SizedBox(height: 17,),
-                      TextFormField(
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                            suffixIcon: Icon(Icons.perm_identity),
-                            hintText: '  Full Name ',
-                            hintStyle: TextStyle(color: Colors.blue),
-                            label: Text(
-                              'Name ',
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 17),
+                        TextFormField(
+                          controller: nameController,
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                              suffixIcon: Icon(Icons.perm_identity),
+                              hintText: ' Full Name ',
+                              hintStyle: TextStyle(color: Colors.blue),
+                              label: Text(
+                                'Name ',
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              )),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Enter your name';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 17),
+                        TextFormField(
+                          controller: emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                              suffixIcon: Icon(Icons.email_outlined),
+                              hintText: ' abc@email.com',
+                              hintStyle: TextStyle(color: Colors.blue),
+                              label: Text(
+                                'Email',
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              )),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Enter your email';
+                            }
+                            if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
+                                .hasMatch(value)) {
+                              return 'Enter a valid email';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 17),
+                        TextFormField(
+                          controller: passwordController,
+                          keyboardType: TextInputType.number,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              suffixIcon: Icon(Icons.lock_outline),
+                              hintText: ' At least 6 digits number ',
+                              hintStyle: TextStyle(color: Colors.blue),
+                              label: Text(
+                                'Password',
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              )),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Enter your password';
+                            }
+                            if (value.length < 6) {
+                              return 'Password must be at least 6 characters';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 17),
+                        TextFormField(
+                          controller: confirmPasswordController,
+                          keyboardType: TextInputType.number,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              suffixIcon: Icon(Icons.lock_outline),
+                              hintText: ' Confirm Password ',
+                              hintStyle: TextStyle(color: Colors.blue),
+                              label: Text(
+                                'Confirm Password',
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              )),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Confirm your password';
+                            }
+                            if (value != passwordController.text) {
+                              return 'Passwords do not match';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 17),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Accept All Rules and Regulations:',
                               style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue),
                             ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            )),
-                      ),
-                      SizedBox(height: 17,),
-                      TextFormField(
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                            suffixIcon: Icon(Icons.email_outlined),
-                            hintText: ' abc@email.com',
-                            hintStyle: TextStyle(color: Colors.blue),
-                            label: Text(
-                              'Email',
-                              style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Radio<String>(
+                              value: 'Yes',
+                              groupValue: _selectedOption,
+                              onChanged: (value) {
+                                setState(() {
+                                  _selectedOption = value!;
+                                });
+                              },
                             ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            )),
-                      ),
-                      SizedBox(height: 17,),
-                      TextFormField(
-                        keyboardType: TextInputType.number,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                            suffixIcon: Icon(Icons.lock_outline),
-                            hintText: ' Atlas 6 Degets Number ',
-                            hintStyle: TextStyle(color: Colors.blue),
-                            label: Text(
-                              'Password',
-                              style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold),
+                            Text('Yes'),
+                            Radio<String>(
+                              activeColor: Colors.blue,
+                              focusColor: Colors.blue,
+                              value: 'No',
+                              groupValue: _selectedOption,
+                              onChanged: (value) {
+                                setState(() {
+                                  _selectedOption = value!;
+                                });
+                              },
                             ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            )),
-                      ),
-                      SizedBox(height: 17,),
-                      TextFormField(
-                        keyboardType: TextInputType.number,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                            suffixIcon: Icon(Icons.lock_outline),
-                            hintText: '  Conform Password ',
-                            hintStyle: TextStyle(color: Colors.blue),
-                            label: Text(
-                              ' Comform Password',
-                              style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            )),
-                      ),
+                            Text('No'),
+                          ],
+                        ),
+                        SizedBox(height: 22),
+                        ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate() &&
 
-                      // রেডিও বাটন যুক্ত করা হল
-                      SizedBox(height: 17,),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            '  Accept All Rules and Regulations :',
+                                _selectedOption == 'Yes') {
+                              auth.createUserWithEmailAndPassword(email:emailController.text.toString(),
+                                  password: passwordController.text.toString());
+                              Get.to(All_prodicts_Screen());
+                            } else {
+
+                              if (_selectedOption != 'Yes') {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                        'You must accept the rules and regulations'),
+                                  ),
+                                );
+                              }
+                            }
+                          },
+                          child: Text(
+                            'SING IN',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.blue),
+                                color: Colors.white),
                           ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Radio<String>(
-                            value: 'Yes ',
-                            groupValue: _selectedOption,
-                            onChanged: (value) {
-                              setState(() {
-                                _selectedOption = value!;
-                              });
-                            },
-                          ),
-                          Text('Yes'),
-                          Radio<String>(
-                            activeColor: Colors.blue,
-                            focusColor: Colors.blue,
-
-                            value: 'No',
-                            groupValue: _selectedOption,
-                            onChanged: (value) {
-                              setState(() {
-                                _selectedOption = value!;
-                              });
-                            },
-                          ),
-                          Text('No'),
-                        ],
-                      ),
-
-                      SizedBox(height: 22,),
-                      ElevatedButton(
-                        onPressed: () {
-                          Get.to(All_prodicts_Screen());
-                        },
-                        child: Text(' SING IN ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                          style: ElevatedButton.styleFrom(
+                              minimumSize: Size(400, 60),
+                              shadowColor: Colors.blue,
+                              backgroundColor: Colors.blue),
                         ),
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: Size(400, 60),
-                            shadowColor: Colors.blue,
-                            backgroundColor: Colors.blue
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
