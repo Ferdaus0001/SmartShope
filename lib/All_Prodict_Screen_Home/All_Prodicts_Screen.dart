@@ -276,9 +276,9 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                   Text('Apple '),
           
           
-                      Container(height: 500,width: 500,color: Colors.blue,),
-                      Container(height: 500,width: 500,color: Colors.orange,),
-          
+                      // Container(height: 500,width: 500,color: Colors.blue,),
+                      // Container(height: 500,width: 500,color: Colors.orange,),
+
                 ],
           
               ),

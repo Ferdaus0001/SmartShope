@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _CrentPage = 0;
   final List AllPage = [
     All_prodicts_Screen(),
-    Add_to_Favreat(),
+     Add_to_Favreat(),
     BuyProdectsScreen(),
     accountScreen(),
   ];
@@ -96,17 +96,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
                             child: CircleAvatar(
                               backgroundImage: AssetImage(
-                                  'assets/image/WMNS+AIR+JORDAN+1+MID+SE.png'),
+                                  'assets/image/ferdaus.jpg'),
                             ),
                             onTap: (){Get.to(accountScreen());},
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.blueGrey.shade100,
+                            color: Colors.white,
                           ),
                           otherAccountsPictures: [
                             CircleAvatar(
                               backgroundImage:
-                                  AssetImage('assets/image/whatchforman.jpg'),
+                              AssetImage('assets/image/ferdaushossan2.jpg'),
                             ),
                           ],
                           accountName: Text('ferdaus '),
@@ -169,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ListTile(
                   leading: CircleAvatar(
                     backgroundImage:
-                        AssetImage('assets/image/WMNS+JORDAN+DEJA+SANDAL.png'),
+                    AssetImage('assets/image/ferdaus.jpg'),
                   ),
                   title: Text(' About Me '),
                   trailing: CircleAvatar(
@@ -227,9 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
 
-        body: SafeArea(
-          child: AllPage[_CrentPage],
-        ),
+        body: AllPage[_CrentPage],
       ),
     );
   }

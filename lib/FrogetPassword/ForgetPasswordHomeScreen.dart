@@ -11,7 +11,8 @@ class ForgetPassword extends StatefulWidget {
 
 class _ForgetPasswordState extends State<ForgetPassword> {
   final TextEditingController emailController = TextEditingController();
-  final List<TextEditingController> otpControllers = List.generate(4, (index) => TextEditingController()); // 4 OTP fields
+  final List<TextEditingController> otpControllers =
+      List.generate(4, (index) => TextEditingController()); // 4 OTP fields
   bool isOtpSent = false; // Track if OTP has been sent
   final _formKey = GlobalKey<FormState>(); // Form key for validation
 
@@ -21,7 +22,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   Future<void> sendOtpToEmail() async {
     if (_formKey.currentState!.validate()) {
       try {
-        await _auth.sendPasswordResetEmail(email: emailController.text); // Sending password reset email as OTP
+        await _auth.sendPasswordResetEmail(
+            email: emailController.text); // Sending password reset email as OTP
         setState(() {
           isOtpSent = true; // OTP Screen is shown after valid email
         });
@@ -39,7 +41,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   // Function to save and validate OTP (Here, for demo purposes)
   void validateAndSaveOtp() {
     if (_formKey.currentState!.validate()) {
-      String otp = otpControllers.map((controller) => controller.text).join(); // Combine all OTP fields
+      String otp = otpControllers
+          .map((controller) => controller.text)
+          .join(); // Combine all OTP fields
 
       // For demonstration, we're showing the OTP value
       ScaffoldMessenger.of(context).showSnackBar(
@@ -53,7 +57,6 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Forget Password?'),
-
         centerTitle: true,
       ),
       body: SafeArea(
@@ -63,7 +66,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             key: _formKey, // Form key for email validation
             child: Column(
               children: [
-                SizedBox(height: 22,),
+                SizedBox(
+                  height: 22,
+                ),
                 if (!isOtpSent) // Show email input if OTP not yet sent
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
@@ -86,7 +91,6 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     },
                   ),
                 SizedBox(height: 24),
-
                 if (isOtpSent) // Show OTP fields if OTP is sent
                   Column(
                     children: [
@@ -139,7 +143,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       ),
                     ],
                   ),
-                     SizedBox(height: 22,),
+                SizedBox(
+                  height: 22,
+                ),
                 if (!isOtpSent) // Show 'Send OTP' button if OTP is not sent yet
                   ElevatedButton(
                     onPressed: sendOtpToEmail,

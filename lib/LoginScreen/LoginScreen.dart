@@ -2,6 +2,7 @@ import 'dart:core';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smartshopes/HomeScreen/HomeScreen.dart';
 import 'package:smartshopes/SingupScrren/SingupSceen.dart';
 import '../All_Prodict_Screen_Home/All_Prodicts_Screen.dart';
 import '../FrogetPassword/ForgetPasswordHomeScreen.dart';
@@ -39,7 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
         await auth.signInWithEmailAndPassword(
             email: emailController.text.toString(),
             password: passwordController.text.toString());
-        Get.to(All_prodicts_Screen());
+        // Get.to(All_prodicts_Screen());
+        Get.to(HomeScreen());
       } catch (e) {
         // Handle login error
         ScaffoldMessenger.of(context)
@@ -104,12 +106,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (value == null || value.isEmpty) {
                               return 'Enter your email';
                             }
-                            if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                            if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
+                                .hasMatch(value)) {
                               return 'Enter a valid email';
                             }
                             return null;
                           },
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.text
+                          ,
                           decoration: InputDecoration(
                             suffixIcon: Icon(Icons.email_outlined),
                             hintText: 'abc@email.com',
@@ -128,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         SizedBox(height: 26),
                         TextFormField(
-                          keyboardType: TextInputType.visiblePassword,
+                          keyboardType: TextInputType.number,
                           controller: passwordController,
                           obscureText: !_isPasswordVisible,
                           validator: (value) {
@@ -180,26 +184,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         _isLoading
                             ? CircularProgressIndicator() // Show loading spinner
                             : ElevatedButton(
-                          onPressed: _login,
-                          child: Text(
-                            'Login IN',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: Size(400, 60),
-                            shadowColor: Colors.blue,
-                            backgroundColor: Colors.blue,
-                          ),
-                        ),
+                                onPressed: _login,
+                                child: Text(
+                                  'Login IN',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  minimumSize: Size(400, 60),
+                                  shadowColor: Colors.blue,
+                                  backgroundColor: Colors.blue,
+                                ),
+                              ),
                         SizedBox(height: 41),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             const Text('Dont Have an account?'),
-                            ElevatedButton(
+                            TextButton(
                               onPressed: () {
                                 Get.to(SingupScreen());
                               },

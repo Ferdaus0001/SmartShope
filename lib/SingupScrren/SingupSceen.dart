@@ -100,7 +100,7 @@ class _SingupScreenState extends State<SingupScreen> {
                         SizedBox(height: 17),
                         TextFormField(
                           controller: emailController,
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType. emailAddress,
                           decoration: InputDecoration(
                               suffixIcon: Icon(Icons.email_outlined),
                               hintText: ' abc@email.com',
