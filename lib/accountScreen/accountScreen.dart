@@ -109,20 +109,25 @@ class _accountScreenState extends State<accountScreen> {
                 onTap: (){
                   Get.snackbar('Massage ', 'Admin Edit ');
                 },
-                child: Container(
-                  height: 60,
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Edait ',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.white,fontSize: 17  ),
-                  ),
-                  width: 210,
-                  decoration: BoxDecoration(
-
-                    color: Colors.blueGrey.shade400,
-                    borderRadius: BorderRadius.circular(55),
-                    border: Border.all(color: Colors.blue,width: 2),
+                child: Card(
+                  shadowColor: Colors.blue,
+                  elevation: 6,
+                  shape: CircleBorder(),
+                  child: Container(
+                    height: 60,
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Edait ',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white,fontSize: 17  ),
+                    ),
+                    width: 210,
+                    decoration: BoxDecoration(
+                  
+                      color: Colors.blue.shade400,
+                      borderRadius: BorderRadius.circular(55),
+                      border: Border.all(color: Colors.blue,width: 1),
+                    ),
                   ),
                 ),
               )

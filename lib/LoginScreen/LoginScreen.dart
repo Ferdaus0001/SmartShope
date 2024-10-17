@@ -101,6 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         SizedBox(height: 40),
                         TextFormField(
+
                           controller: emailController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -112,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                             return null;
                           },
-                          keyboardType: TextInputType.text
+                          keyboardType: TextInputType. emailAddress
                           ,
                           decoration: InputDecoration(
                             suffixIcon: Icon(Icons.email_outlined),

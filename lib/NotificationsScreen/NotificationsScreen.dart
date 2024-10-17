@@ -29,7 +29,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               Center(
                 child: CircleAvatar(
                   backgroundImage: AssetImage(
-                    'assets/image/WMNS+AIR+JORDAN+1+LOW (1).png',
+                    'assets/image/ferdasuhossna.jpg',
                   ),
                   radius: 50,
                 ),
