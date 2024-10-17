@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -8,12 +9,15 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:smartshopes/Add_to_Favtet/Add_to_Favreat.dart';
 import 'package:smartshopes/DataMoudelsInformaions/ApplesModles.dart';
 import 'package:smartshopes/ModulesScreenforProdecits/Macbook.dart';
+import 'package:smartshopes/ModulesScreenforProdecits/WatchModles.dart';
 import 'package:smartshopes/TabBarScreenForProdictList/AirProdictsScreen.dart';
 import 'package:smartshopes/TabBarScreenForProdictList/ApplePhoneScreen.dart';
 import 'package:smartshopes/TabBarScreenForProdictList/AppleWatchScreen.dart';
 import 'package:smartshopes/TabBarScreenForProdictList/NikeProdictsScreen.dart';
 import 'package:smartshopes/TabBarScreenForProdictList/TVProdictsScreen.dart';
 
+import '../ModulesScreenforProdecits/AirProdsModels.dart';
+import '../ModulesScreenforProdecits/ComputersMoldes.dart';
 import '../ModulesScreenforProdecits/Modules_SamsungScreen.dart';
 
 class All_prodicts_Screen extends StatefulWidget {
@@ -83,6 +87,7 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                             ),
                           ),
                           decoration: BoxDecoration(
+
                               border: Border.all(
                                 color: Colors.blue,
                                 width: 1,
@@ -165,6 +170,7 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                             ),
                           ),
                           decoration: BoxDecoration(
+
                               border: Border.all(
                                 color: Colors.blue,
                                 width: 1,
@@ -302,7 +308,7 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                                 );
                               },
                               child: Container(
-                                margin: EdgeInsets.only(right: 1),
+                                margin: EdgeInsets.only(right: 2,),
                                 height: 330,
                                 width: 220,
                                 decoration: BoxDecoration(
@@ -310,7 +316,7 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                                     borderRadius: BorderRadius.circular(15),
                                     border: Border.all(
                                       color: Colors.blue,
-                                      width: 0.6,
+                                      width: 2,
                                     )),
                                 child: SingleChildScrollView(
                                   child: Column(
@@ -337,11 +343,11 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                                       Stack(
                                         children: [
                                           Container(
-                                            margin: EdgeInsets.only(left: 30),
+                                            margin: EdgeInsets.only(left: 10),
                                             height: 130,
                                             width: 140,
                                             decoration: BoxDecoration(
-                                                // color: Colors.blueGrey.shade50,
+                                                color: Colors.white,
                                                 borderRadius:
                                                     BorderRadius.circular(60)),
                                           ),
@@ -361,16 +367,17 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                                       Text(
                                         ' Trendign Now ',
                                         style: TextStyle(
-                                            fontSize: 14, color: Colors.blue),
+                                            fontSize: 14, color: Colors.purple),
                                       ),
                                       SizedBox(
                                         height: 8,
                                       ),
                                       Text(
-                                        sansung[index].SmaungPrices.toString(),
+                                        '\৳'+sansung[index].SmaungPrices.toString(),
                                         style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.bold,
+                                          color: Colors.blue
                                         ),
                                       ),
                                     ],
@@ -385,7 +392,12 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                     height: 6,
                   ),
                   // এখন থেকে কোড সুরু
-                  Text('Apple '),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text('Apple ',style: TextStyle(fontWeight: FontWeight.bold),),
+                    ],
+                  ),
                   SizedBox(height: 15,),
                   Container(
                     height: 350,
@@ -396,9 +408,9 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context , indext ){
                       return Container(
-                        margin: EdgeInsets.only(right: 16),
-                        height: 330,
-                        width: 270 ,
+                        margin: EdgeInsets.only(right: 5,left: 9),
+                        height: 300,
+                        width: 250 ,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(22),
@@ -415,13 +427,10 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                               ],
                               
                             ),
-                            Text( macbook[indext].Title),
-                            Text(macbook[indext].Princes.toString()),
-                            Text(macbook[indext].Colrs.toString()),
-                            Container(height: 30,width: 30,decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(55),
-                            ),)
+                            Text( macbook[indext].Title,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 19),),
+                            Text( '\৳'+macbook[indext].Princes.toString(),style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold ),),
+                            Text( 'Color  '+macbook[indext].Colrs.toString()),
+
                           ],
                         ),
                       );
@@ -430,7 +439,134 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
 
                 ],
               ),
-              Text('data'),
+              SizedBox(height: 5,),
+              Text('Air prods ',style: TextStyle(fontWeight: FontWeight.bold),),
+              SizedBox(height: 5,),
+              /// তিতিও  কাজ শুরু
+
+              Container(
+                height: 335,
+                width: double.infinity,
+           decoration: BoxDecoration(
+             color: Colors.white,
+           ),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: airpords.length,
+                  itemBuilder: (context ,indext ){
+                return Container(
+                  margin: EdgeInsets.only (right: 6,left: 7),
+                  width: 250,
+                  height: 350,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(27),
+                    border: Border.all(color: Colors.blue,width: 2),
+
+                  ),
+                  child: Column(
+                    children: [
+                      Transform.translate(offset: Offset(81,8),
+                      child: IconButton(onPressed: (){}, icon: Icon(Icons.favorite,size: 26,color: Colors.grey,))),
+                      Stack(
+                        children: [
+                          Image.asset( airpords[indext].airpordsimage , height: 210,width: 210,),
+                        ],
+                      ),
+                      Text(airpords[indext].Title,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+                      Text( '৳'+airpords[indext].Princes.toString(),style: TextStyle(fontWeight: FontWeight.bold,color: Colors.blue),),
+
+                      Text( 'Colors '+airpords[indext].Colrs),
+
+                    ],
+
+                  ),
+                );
+              }),
+              ),
+              SizedBox(height: 10,),
+              Text(' Watch  ',style: TextStyle(fontWeight: FontWeight.bold),),
+              SizedBox(height: 11,),
+              Container(
+                height: 380,
+                width: double.infinity,
+                color: Colors.white,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                    itemCount: watch.length,
+                    itemBuilder: (context, indext ){
+                  return Container(
+                    margin: EdgeInsets.only(right: 5,left: 5),
+                    height: 300,
+                    width: 260,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.blue),
+                      borderRadius: BorderRadius.circular(22),
+                    ),
+                    child: Column(
+                      children: [
+                        Transform.translate(offset: Offset(95, 4),
+                        child: IconButton(onPressed: (){}, icon: Icon(Icons.favorite,color: Colors.grey,size: 29,))),
+                       Stack(
+                         children: [
+                           Image.asset( watch[indext].watchsimage,height: 270,width: 270,),
+
+                         ],
+                       ),
+                        Text(watch[indext].Title,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                        Text('\$'+watch[indext].Princes.toString(),style: TextStyle(fontWeight: FontWeight.bold,color: Colors.blue),),
+
+                        Text('Colors '+watch[indext].Colrs),
+
+                      ],
+                    ),
+                  );
+                }),
+              ),
+              SizedBox(height: 12,),
+              Container(
+                height: 360,
+                width: double.infinity,
+                color: Colors.white,
+                child: ListView.builder(
+                  itemCount: computer.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, indext  ){
+                  return Container(
+                    margin: EdgeInsets.only(left: 5,right: 5),
+                    height: 350,
+                    width: 250,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(22),
+                      border: Border.all(color: Colors.blue,)
+                    ),
+                    child: Column(
+                      children: [
+                        Transform.translate(offset: Offset(95,5),
+                        child: IconButton(onPressed: (){}, icon: Icon(Icons.favorite,color: Colors.grey,size: 22,))),
+                        Stack(
+                          children: [
+                            Image.asset(computer[indext].computerImage,height: 200,width: 200,),
+                          ],
+                        ),
+                        Text( computer[indext].Title,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+                        Text( '৳'+computer[indext].Princes.toString(),style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),),
+                        Text( 'Colors '+computer[indext].Colrs.toString()),
+                      ],
+
+
+                    ),
+                  );
+                }),
+              ),
+             Text('data'),
+              Container(
+                height: 400,
+                width: double.infinity,
+                color: Colors.blue,
+              )
             ],
           ),
         ),

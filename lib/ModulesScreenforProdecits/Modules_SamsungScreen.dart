@@ -13,6 +13,8 @@ List<Apple> sansung = [
   Apple(ImagePath: 'assets/image/samsung3.jpg', SmaungPrices: 22000, TitleText: 'Samsung  Galaxy A32', isTraning: true),
   Apple(ImagePath: 'assets/image/a54-black.png', SmaungPrices: 50000, TitleText: 'SamSung Galaxy A50 ', isTraning: true),
   Apple(ImagePath: 'assets/image/RRD0KhpKg0v2hU5hMHEXoF1stSnL9uAdGI4X9Fzh.webp', SmaungPrices: 13000, TitleText: 'SamSung Galaxy M55', isTraning: true),
+  Apple(ImagePath: 'assets/image/sm-a156b_galaxy-a15-5g_blue-black_650 (1).png', SmaungPrices: 13000, TitleText: 'SamSung Galaxy M55', isTraning: true),
+  Apple(ImagePath: 'assets/image/Galaxy-M14_-new-tag.png', SmaungPrices: 13000, TitleText: 'SamSung Galaxy M55', isTraning: true),
 //
 // ];
 // class Samsungs{
