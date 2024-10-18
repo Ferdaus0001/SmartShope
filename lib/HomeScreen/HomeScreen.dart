@@ -7,6 +7,7 @@ import 'package:smartshopes/All_Prodict_Screen_Home/All_Prodicts_Screen.dart';
 import 'package:smartshopes/DiscontScreen/DiscontScreen.dart';
 import 'package:smartshopes/HomeScreenTwo/HomeScreenTwo.dart';
 import 'package:smartshopes/NotificationsScreen/NotificationsScreen.dart';
+import 'package:smartshopes/TabBarScreenForProdictList/SMS_Screen.dart';
 import 'package:smartshopes/accountScreen/accountScreen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -59,23 +60,27 @@ class _HomeScreenState extends State<HomeScreen> {
 
           centerTitle: true,
           actions: [
+
             IconButton(
               onPressed: () {
                 Get.to(DiscontScreen());
               },
               icon: Icon(Icons.redeem),
             ),
-            SizedBox(
-              width: 20,
-            ),
+            // SizedBox(
+            //   width: 6,
+            // ),
+            IconButton(onPressed: (){
+              Get.to(SMS());
+            }, icon: Icon(Icons.sms_outlined)),
             IconButton(
                 onPressed: () {
                   Get.to(NotificationsScreen());
                 },
                 icon: Icon(Icons.notifications_none)),
-            SizedBox(
-              width: 9,
-            ),
+            // SizedBox(
+            //   width: 9,
+            // ),
           ],
         ),
 

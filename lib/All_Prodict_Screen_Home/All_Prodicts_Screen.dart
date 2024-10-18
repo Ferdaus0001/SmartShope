@@ -836,7 +836,45 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                       );
                     }),
               ),
+                 SizedBox(height: 20,),
+                 Container(height: 380,width: double.infinity,
+                   color: Colors.white,
+                   child: ListView.builder(
+                     scrollDirection: Axis.horizontal,
+                     itemCount: sansung.length,
+                       itemBuilder: (context, indext ){
+                     return Container(
+                       height: 360,
+                       width: 250,
+                       decoration: BoxDecoration(
+                         color: Colors.white,
+                         borderRadius: BorderRadius.circular(22),
+                         border: Border.all(color: Colors.blue),
+                       ),
+                       margin: EdgeInsets.only(left: 6,right: 6),
+                       child: Column(
+                         children: [
+                           Icon(Icons.favorite,color: Colors.grey,),
+                           Stack(
+                             children: [
+                               Image.asset(sansung[indext].ImagePath.toString())
+                             ],
+                           ),
+                           Text(sansung[indext].TitleText.toString(),style: TextStyle(fontWeight: FontWeight.bold,),),
 
+                           Text(sansung[indext].SmaungPrices.toString(),style: TextStyle(fontWeight: FontWeight.bold,color: Colors.blue),),
+                         ],
+                       ),
+                     );
+                   }),
+                 ),
+               SizedBox(height: 22,),
+              Container(
+                height: 400,
+                width: double.infinity,
+                color: Colors.blue,
+
+              )
             ],
           ),
         ),
