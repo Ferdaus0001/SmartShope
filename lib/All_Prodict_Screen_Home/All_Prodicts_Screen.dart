@@ -319,7 +319,7 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                                     borderRadius: BorderRadius.circular(15),
                                     border: Border.all(
                                       color: Colors.blue,
-                                      width: 2,
+
                                     )),
                                 child: SingleChildScrollView(
                                   child: Column(
@@ -425,7 +425,7 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(22),
                                 border:
-                                    Border.all(color: Colors.blue, width: 2)),
+                                    Border.all(color: Colors.blue, )),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -496,7 +496,7 @@ class _All_prodicts_ScreenState extends State<All_prodicts_Screen> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(27),
-                          border: Border.all(color: Colors.blue, width: 2),
+                          border: Border.all(color: Colors.blue, ),
                         ),
                         child: Column(
                           children: [

@@ -11,7 +11,12 @@ class _DarawerScreenState extends State<DarawerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('Drawer'),
+      body: Column(
+         children: [
+           Container(height: 600,width: 600,color: Colors.blue,)
+         ],
+
+      )
     );
   }
 }
